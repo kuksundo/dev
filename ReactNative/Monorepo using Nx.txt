@@ -1,0 +1,16 @@
+1) Create a Nx workspace
+npx create-nx-workspace <your_app_name> --preset=react-native
+nx generate application <your_app_name>
+
+2)nx run-android <your-app-name>
+  nx run-ios <your-app-name>
+
+3)server start,
+nx start <your-app-name>
+
+4)Create a Common Library
+//This should generate <your_lib> folder under libs
+
+5)Create a Common Component for both apps
+nx generate component <your-component-name> --project=ui --export
+//This generates the folder <your-component-name> under ui/src/lib.
