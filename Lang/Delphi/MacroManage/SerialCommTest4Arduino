@@ -1,0 +1,36 @@
+
+[
+	{
+		"ClassName": "TMacroManagement",
+		"CommIniFileName": "",
+		"MacroName": "a",
+		"MacroDesc": "",
+		"IterateCount": 1,
+		"IsExecute": true,
+		"ActionDesc": "",
+		"MacroArray": 
+		[
+		],
+		"ActionCollect": 
+		[
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Mouse Left Click",
+					"ActionDesc": "Mouse Left Click",
+					"CustomDesc": "",
+					"ActionType": "atMouseLClick",
+					"ExecMode": "emHardware",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 0,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			}
+		]
+	}
+]

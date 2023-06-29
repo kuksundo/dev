@@ -1,0 +1,360 @@
+
+[
+	{
+		"ClassName": "TMacroManagement",
+		"CommIniFileName": "",
+		"MacroName": "근무종료확정 + PC 종료",
+		"MacroDesc": "",
+		"IterateCount": 1,
+		"IsExecute": true,
+		"ActionDesc": "",
+		"MacroArray": 
+		[
+		],
+		"ActionCollect": 
+		[
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Mouse position",
+					"ActionDesc": "Mouse position (1815, 919)",
+					"CustomDesc": "",
+					"ActionType": "atMousePos",
+					"ExecMode": "emSWEvent",
+					"XPos": 1815,
+					"YPos": 919,
+					"WaitSec": 0,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Wait (ms)",
+					"ActionDesc": "Waiting Time 500 (mSec)",
+					"CustomDesc": "",
+					"ActionType": "atWait",
+					"ExecMode": "emSWEvent",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 500,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Mouse Left Click",
+					"ActionDesc": "Mouse Left Click",
+					"CustomDesc": "",
+					"ActionType": "atMouseLClick",
+					"ExecMode": "emHardware",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 0,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Wait (ms)",
+					"ActionDesc": "Waiting Time 500 (mSec)",
+					"CustomDesc": "",
+					"ActionType": "atWait",
+					"ExecMode": "emSWEvent",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 500,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Mouse position",
+					"ActionDesc": "Mouse position (1702, 973)",
+					"CustomDesc": "",
+					"ActionType": "atMousePos",
+					"ExecMode": "emSWEvent",
+					"XPos": 1702,
+					"YPos": 973,
+					"WaitSec": 0,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Wait (ms)",
+					"ActionDesc": "Waiting Time 1000 (mSec)",
+					"CustomDesc": "",
+					"ActionType": "atWait",
+					"ExecMode": "emSWEvent",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 1000,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Mouse Left Click",
+					"ActionDesc": "Mouse Left Click",
+					"CustomDesc": "",
+					"ActionType": "atMouseLClick",
+					"ExecMode": "emSWEvent",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 0,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Wait (ms)",
+					"ActionDesc": "Waiting Time 500 (mSec)",
+					"CustomDesc": "",
+					"ActionType": "atWait",
+					"ExecMode": "emSWEvent",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 500,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Mouse position",
+					"ActionDesc": "Mouse position (1849, 1122)",
+					"CustomDesc": "",
+					"ActionType": "atMousePos",
+					"ExecMode": "emSWEvent",
+					"XPos": 1849,
+					"YPos": 1122,
+					"WaitSec": 0,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Wait (ms)",
+					"ActionDesc": "Waiting Time 500 (mSec)",
+					"CustomDesc": "",
+					"ActionType": "atWait",
+					"ExecMode": "emSWEvent",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 500,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Mouse Left Click",
+					"ActionDesc": "Mouse Left Click",
+					"CustomDesc": "",
+					"ActionType": "atMouseLClick",
+					"ExecMode": "emSWEvent",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 0,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Wait (ms)",
+					"ActionDesc": "Waiting Time 5000 (mSec)",
+					"CustomDesc": "",
+					"ActionType": "atWait",
+					"ExecMode": "emSWEvent",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 5000,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Mouse position",
+					"ActionDesc": "Mouse position (1285, 840)",
+					"CustomDesc": "",
+					"ActionType": "atMousePos",
+					"ExecMode": "emSWEvent",
+					"XPos": 1285,
+					"YPos": 840,
+					"WaitSec": 0,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Wait (ms)",
+					"ActionDesc": "Waiting Time 500 (mSec)",
+					"CustomDesc": "",
+					"ActionType": "atWait",
+					"ExecMode": "emSWEvent",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 500,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Mouse Left Click",
+					"ActionDesc": "Mouse Left Click",
+					"CustomDesc": "",
+					"ActionType": "atMouseLClick",
+					"ExecMode": "emSWEvent",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 0,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Wait (ms)",
+					"ActionDesc": "Waiting Time 1000 (mSec)",
+					"CustomDesc": "",
+					"ActionType": "atWait",
+					"ExecMode": "emSWEvent",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 1000,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Mouse position",
+					"ActionDesc": "Mouse position (902, 637)",
+					"CustomDesc": "",
+					"ActionType": "atMousePos",
+					"ExecMode": "emSWEvent",
+					"XPos": 902,
+					"YPos": 637,
+					"WaitSec": 0,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Wait (ms)",
+					"ActionDesc": "Waiting Time 500 (mSec)",
+					"CustomDesc": "",
+					"ActionType": "atWait",
+					"ExecMode": "emSWEvent",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 500,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			},
+			{
+				"ClassName": "TActions",
+				"ActionItem": 
+				{
+					"ClassName": "TActionItem",
+					"ActionCode": "Mouse Left Click",
+					"ActionDesc": "Mouse Left Click",
+					"CustomDesc": "",
+					"ActionType": "atMouseLClick",
+					"ExecMode": "emSWEvent",
+					"XPos": 0,
+					"YPos": 0,
+					"WaitSec": 0,
+					"GridIndex": 0,
+					"VKExtendKey": 0,
+					"InputText": ""
+				}
+			}
+		]
+	}
+]
