@@ -766,9 +766,9 @@ object MacroManageF: TMacroManageF
             Width = 295
           end>
         object ToolBar1: TToolBar
-          Left = 11
+          Left = 9
           Top = 0
-          Width = 286
+          Width = 288
           Height = 25
           Caption = 'ToolBar1'
           TabOrder = 0
@@ -827,15 +827,6 @@ object MacroManageF: TMacroManageF
       Caption = #54868#47732#48372#54840#44592' '#48169#51648
       TabOrder = 7
       OnClick = NoScreenSaverCheckClick
-    end
-    object Button2: TButton
-      Left = 368
-      Top = 104
-      Width = 81
-      Height = 41
-      Caption = 'SendKey'
-      TabOrder = 8
-      OnClick = Button2Click
     end
   end
   object Panel2: TPanel
@@ -1070,10 +1061,12 @@ object MacroManageF: TMacroManageF
             ExplicitWidth = 327
             ExplicitHeight = 88
             inherited ToolBar1: TToolBar
-              Width = 316
+              Left = 9
+              Width = 318
               Height = 88
               ButtonHeight = 24
-              ExplicitWidth = 316
+              ExplicitLeft = 9
+              ExplicitWidth = 318
               ExplicitHeight = 88
               inherited btnLeftAlignment: TToolButton
                 ExplicitHeight = 24
@@ -1253,7 +1246,7 @@ object MacroManageF: TMacroManageF
         end
         inherited ImageList1: TImageList
           Bitmap = {
-            494C010115001800F40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+            494C010115001800000110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
             0000000000003600000028000000400000006000000001002000000000000060
             0000000000000000000000000000000000000000000000000000000000000000
             0000000000000000000000000000000000000000000000000000000000000000
@@ -2134,7 +2127,7 @@ object MacroManageF: TMacroManageF
     Left = 67
     Top = 111
     Bitmap = {
-      494C010115001800780110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010115001800840110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000006000000001002000000000000060
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2967,6 +2960,10 @@ object MacroManageF: TMacroManageF
       Caption = 'Add Action From SIHelper File'
       Hint = 'Macro Record'#47484' '#53685#54644' '#51089#49457#54620' Input List'#47484' Action Item'#51004#47196' '#48320#44221#54632
       OnClick = AddActionFromSIHelperFile1Click
+    end
+    object ChangeMacroName1: TMenuItem
+      Caption = 'Change Macro Name'
+      OnClick = ChangeMacroName1Click
     end
   end
 end

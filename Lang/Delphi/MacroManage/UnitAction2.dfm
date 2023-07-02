@@ -538,6 +538,7 @@ object frmActions: TfrmActions
     Height = 235
     Style = lbOwnerDrawFixed
     ImeName = 'Microsoft IME 2010'
+    MultiSelect = True
     TabOrder = 4
     OnDblClick = ActionEditLBDblClick
     OnDrawItem = ActionEditLBDrawItem

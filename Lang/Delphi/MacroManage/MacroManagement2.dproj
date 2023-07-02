@@ -132,6 +132,11 @@
         </DCCReference>
         <DCCReference Include="..\..\Common\UnitPanelUtil.pas"/>
         <DCCReference Include="..\..\..\..\..\project\Common\UnitEnumHelper.pas"/>
+        <DCCReference Include="..\..\..\..\..\project\Common\Forms\FrmInputEdit.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\..\Common\UnitListBoxUtil.pas"/>
+        <DCCReference Include="UnitArrayUtil.pas"/>
         <None Include="MacroManagement2.manifest"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

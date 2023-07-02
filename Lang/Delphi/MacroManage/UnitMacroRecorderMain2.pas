@@ -89,7 +89,6 @@ type
     AlarmFromTo1: TAlarmFromTo;
     NoScreenSaverCheck: TCheckBox;
     Timer1: TTimer;
-    Button2: TButton;
     Panel10: TPanel;
     NGFrame: TFrame1;
     CommportConfig1: TMenuItem;
@@ -105,6 +104,7 @@ type
     N4: TMenuItem;
     Config1: TMenuItem;
     LoadEventCaptureConfigFromFile1: TMenuItem;
+    ChangeMacroName1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
@@ -140,7 +140,6 @@ type
     procedure AlarmFromTo1AlarmBegin(Sender: TObject);
     procedure NoScreenSaverCheckClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
     procedure CommportConfig1Click(Sender: TObject);
     procedure btnRecorderClick(Sender: TObject);
     procedure PlayInputMacro1Click(Sender: TObject);
@@ -150,6 +149,7 @@ type
     procedure LoadFromFile1Click(Sender: TObject);
     procedure Config1Click(Sender: TObject);
     procedure LoadEventCaptureConfigFromFile1Click(Sender: TObject);
+    procedure ChangeMacroName1Click(Sender: TObject);
   private
     FMacroCancelToken: IOmniCancellationToken;
     FMacroStepQueue    : TOmniMessageQueue;
@@ -294,7 +294,8 @@ var
 
 implementation
 
-uses UnitNameEdit, SystemCriticalU, sndkey32, FrmSerialCommConfig, UnitKeyBdUtil;
+uses UnitNameEdit, SystemCriticalU, sndkey32, FrmSerialCommConfig, UnitKeyBdUtil,
+  FrmInputEdit;
 
 {$R *.dfm}
 
@@ -433,13 +434,23 @@ end;
 procedure TMacroManageF.AddKeyBdEvent2SIHelper(Message: TMessage);
 var
   LKeyBdHookStruct: KBDLLHOOKSTRUCT;
+  LLKeyBoardHook: TLowLevelKeyboardHook;
 begin
-  LKeyBdHookStruct := pKBDLLHOOKSTRUCT(Message.wParam)^;
+  LLKeyBoardHook := PLowLevelKeyboardHook(Message.LParam)^;
+  LKeyBdHookStruct := LLKeyBoardHook.HookStruct;
 
   with LKeyBdHookStruct do
   begin
     FSendInputHelper.AddKeyboardInput(vkCode, ScanCode, flags, time);
+//  Caption := '[' + IntToStr(LKeyBdHookStruct.vkCode) + ']';
+//    LVirtualKey := vkCode;
+//    LScanCode := ScanCode;
+//    LFlags := flags;
+//    LTime := time;
   end;
+
+//  FSendInputHelper.AddKeyboardInput(LVirtualKey, LScanCode, LFlags, LTime);
+//  FSendInputHelper.AddKeyboardInput(vkCode, ScanCode, flags, time);
 end;
 
 procedure TMacroManageF.AddMacroItemName(AName: string);
@@ -854,15 +865,6 @@ begin
 //  AddMacroTest2;
 end;
 
-procedure TMacroManageF.Button2Click(Sender: TObject);
-var
-  action: IAction;
-begin
-  //UnitMacroListClass.TActionItem.AddActionItem2List¿¡¼­ °¡Á®¿È
-  action := TAction<String>.Create(atMouseLDClick, TParameters<String>.Create('', ''), '');
-  action.Execute();
-end;
-
 procedure TMacroManageF.Button3Click(Sender: TObject);
 var
   i: integer;
@@ -899,6 +901,21 @@ procedure TMacroManageF.NoScreenSaverCheckClick(Sender: TObject);
 begin
   SystemCritical.IsCritical := NoScreenSaverCheck.Checked;
 //  Timer1.Enabled := CheckBox1.Checked;
+end;
+
+procedure TMacroManageF.ChangeMacroName1Click(Sender: TObject);
+var
+  LIdx: integer;
+  LStr: string;
+begin
+  LStr := CreateInputEdit('Macro Name Edit','Macro Name','');
+
+  if LStr <> '' then
+  begin
+    LIdx := MacroGrid.SelectedRow;
+    FMacroManageList.ChangeMacroNameFromIndex(LIdx, LStr);
+    MacroGrid.CellsByName['MacroName', LIdx] := LStr;
+  end;
 end;
 
 function TMacroManageF.CheckNReSetRegistryForEnableLUA: boolean;
@@ -1490,7 +1507,8 @@ begin
           PMsgBuff[j].mi.dwExtraInfo := StrToInt(ST1.Values['ExtraInfo']);
         end;
         INPUT_KEYBOARD: begin
-          PMsgBuff[j].ki.wVk := StringToKey(ST1.Values['wVk']);
+//          PMsgBuff[j].ki.wVk := StringToKey(ST1.Values['wVk']);
+          PMsgBuff[j].ki.wVk := StrToInt(ST1.Values['wVk']);
           PMsgBuff[j].ki.dwFlags := StrToInt(ST1.Values['Flags']);
           PMsgBuff[j].ki.wScan := StrToInt(ST1.Values['ScanCode']);
           PMsgBuff[j].ki.time := StrToInt(ST1.Values['Time']);
@@ -1578,7 +1596,8 @@ begin
           LInput.mi.dwExtraInfo := StrToInt(ST1.Values['ExtraInfo']);
         end;
         INPUT_KEYBOARD: begin
-          LInput.ki.wVk := GetVKeyFromChar(ST1.Values['wVk']);
+//          LInput.ki.wVk := GetVKeyFromChar(ST1.Values['wVk']);
+          LInput.ki.wVk := StrToInt(ST1.Values['wVk']);
           LInput.ki.dwFlags := StrToInt(ST1.Values['Flags']);
           LInput.ki.wScan := StrToInt(ST1.Values['ScanCode']);
           LInput.ki.time := StrToInt(ST1.Values['Time']);
@@ -2018,9 +2037,9 @@ begin
               p := PMsgBuff[i].ki.wVk;
 
 //              if (PMsgBuff[i].ki.dwFlags = WM_KEYDOWN) or (PMsgBuff[i].ki.dwFlags = WM_KEYUP) then
-                ST1.Values['wVk'] := KeyToString(p);
+//                ST1.Values['wVk'] := KeyToString(p);
 //              else
-//                ST1.Values['wVk'] := IntToStr(p);
+                ST1.Values['wVk'] := IntToStr(p);
 
               ST1.Values['Flags'] := InttoStr(PMsgBuff[i].ki.dwFlags);
               ST1.Values['ScanCode'] := InttoStr(PMsgBuff[i].ki.wScan);
@@ -2098,7 +2117,6 @@ begin
       end;
 
       ST1.Values[S] := IntToStr(LInput.Itype);
-
       case LInput.Itype of
         INPUT_MOUSE: begin
           ST1.Values['X'] := InttoStr(LInput.mi.dx);
@@ -2111,6 +2129,7 @@ begin
         INPUT_KEYBOARD: begin
 //          p := LInput.ki.wVk;
           ST1.Values['wVk'] := GetCharFromVKey(LInput.ki.wVk);
+//          ST1.Values['wVk'] := InttoStr(LInput.ki.wVk);
           ST1.Values['Flags'] := InttoStr(LInput.ki.dwFlags);
           ST1.Values['ScanCode'] := InttoStr(LInput.ki.wScan);
           ST1.Values['Time'] := InttoStr(LInput.ki.time);
@@ -2240,16 +2259,21 @@ begin
   FKeyBdHook.OnPreExecute := procedure(Hook: THook; var HookMsg: THookMessage)
     var
       LLKeyBoardHook: TLowLevelKeyboardHook;
-      ScanCode: integer;
+//      ScanCode: integer;
     begin
       LLKeyBoardHook := TLowLevelKeyboardHook(Hook);
 
       if LLKeyBoardHook.LowLevelKeyStates.KeyState <> ksKeyDown then
         exit;
 
-      ScanCode := LLKeyBoardHook.KeyName.ScanCode;
-      SendMessage(Handle, WM_Notify_KeyBd_Event, LongInt(@HookMsg), LongInt(@LLKeyBoardHook));
-//      SendMessage(Handle, WM_Notify_KeyBd_Event, HookMsg.Msg, LongInt(@LLKeyBoardHook));
+//      ScanCode := LLKeyBoardHook.KeyName.ScanCode;
+
+      if HookMsg.Result = HC_ACTION then
+      begin
+        SendMessage(Handle, WM_Notify_KeyBd_Event, HookMsg.Msg, LongInt(@LLKeyBoardHook));
+      end;
+//        Caption := '[' + IntToStr(HookMsg.Msg.WParam) + ' : ' + IntToStr(HookMsg.Msg) +']';
+//      SendMessage(Handle, WM_Notify_KeyBd_Event, LongInt(@HookMsg), LongInt(@LLKeyBoardHook));
 
 //      if not(ScanCode in [VK_NUMPAD0 .. VK_NUMPAD9, VK_0 .. VK_9]) then
 //      begin
@@ -2524,14 +2548,23 @@ begin
 end;
 
 procedure TMacroManageF.WMNotifyKeyBdEvent(var Message: TMessage);
-var
-  LLKeyBoardHook: TLowLevelKeyboardHook;
-  LMsg: THookMessage;
+//var
+//  LLKeyBoardHook: TLowLevelKeyboardHook;
+//  LMsg: THookMessage;
 begin
-  LLKeyBoardHook := PLowLevelKeyboardHook(Message.LParam)^;
-  LMsg := PMessage(Message.LParam)^;
-  AddEvent2Buf(LMsg);
-  Caption := '[' + LLKeyBoardHook.KeyName.KeyExtName + ']';
+//  LMsg := PMessage(Message.WParam)^;
+
+//  if Message.WParam = 256 then
+//  LLKeyBoardHook := PLowLevelKeyboardHook(Message.LParam)^;
+
+  // 229 ( 0xE5 ) : VK_PROCESSKEY ( IME PROCESS key )
+//  if ((Message.WParam = 229 and Message.LParam = -2147483647) or (Message.WParam = 229 and Message.LParam = -2147483648))
+
+  AddEvent2Buf(Message);
+
+  Caption := '[' + IntToStr(Message.Msg) + ' : ' + IntToStr(Message.WParam) + ' : ' + IntToStr(Message.LParam) + ']';
+//  Caption := '[' + IntToStr(LLKeyBoardHook.HookStruct.vkCode) + ']';
+//  Caption := '[' + LLKeyBoardHook.KeyName.KeyExtName + ']';
 end;
 
 procedure TMacroManageF.WMNotifyMouseEvent(var Message: TMessage);

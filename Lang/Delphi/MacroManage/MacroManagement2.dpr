@@ -24,7 +24,10 @@ uses
   IniPersist in '..\..\..\..\..\project\OpenSrc\lib\robstechcorner\rtti\IniPersist.pas',
   FrmEventCaptureConfig in 'FrmEventCaptureConfig.pas' {EventCaptureConfigF},
   UnitPanelUtil in '..\..\Common\UnitPanelUtil.pas',
-  UnitEnumHelper in '..\..\..\..\..\project\Common\UnitEnumHelper.pas';
+  UnitEnumHelper in '..\..\..\..\..\project\Common\UnitEnumHelper.pas',
+  FrmInputEdit in '..\..\..\..\..\project\Common\Forms\FrmInputEdit.pas',
+  UnitListBoxUtil in '..\..\Common\UnitListBoxUtil.pas',
+  UnitArrayUtil in 'UnitArrayUtil.pas';
 
 {$R *.res}
 

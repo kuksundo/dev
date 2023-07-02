@@ -120,7 +120,7 @@ var
 
 implementation
 
-uses sndkey32;
+uses sndkey32, UnitListBoxUtil;
 
 {$R *.dfm}
 
@@ -494,29 +494,54 @@ begin
 end;
 
 procedure TfrmActions.btnDeleteClick(Sender: TObject);
+var
+  i: integer;
+  LAryInt: TArray<integer>;
 begin
-  if ActionEditLB.ItemIndex >= 0 then
-  begin
-    FActionList.Remove(FActionList.Items[ActionEditLB.ItemIndex]);
-    FActionCollection.Delete(ActionEditLB.ItemIndex);
-    ActionEditLB.Items.Delete(ActionEditLB.ItemIndex);
+  LAryInt := GetSelectedIndexs(ActionEditLB);
+  ActionEditLB.Items.BeginUpdate;
+  try
+    for i := Length(LAryInt) - 1 downto 0 do
+    begin
+      if LAryInt[i] < ActionEditLB.Count then
+      begin
+        FActionList.Remove(FActionList.Items[LAryInt[i]]);
+        FActionCollection.Delete(LAryInt[i]);
+        ActionEditLB.Items.Delete(LAryInt[i]);
+      end;
+    end;
+  finally
+    ActionEditLB.Items.EndUpdate;
   end;
 end;
 
 procedure TfrmActions.btnUpClick(Sender: TObject);
-var
-  CurrIndex: Integer;
+//var
+//  CurrIndex: Integer;
+//  i: integer;
+//  LAryInt: TArray<integer>;
 begin
-  with ActionEditLB do
-    if ItemIndex > 0 then
-    begin
-      CurrIndex := ItemIndex;
-      FActionList.Move(ItemIndex, (CurrIndex - 1));
-      FActionCollection.Item[CurrIndex].Index := CurrIndex - 1;
-//      ShowMessage(FActionCollection.Item[CurrIndex].ActionItem.ActionCode);
-      Items.Move(ItemIndex, (CurrIndex - 1));
-      ItemIndex := CurrIndex - 1;
-    end;
+  MoveUpSelectedItemsFromListBox(ActionEditLB);
+//  LAryInt := GetSelectedIndexs(ActionEditLB);
+//  ActionEditLB.Items.BeginUpdate;
+//  try
+//    with ActionEditLB do
+//    begin
+//      for i := 0 to Length(LAryInt) - 1 do
+//      begin
+//        if LAryInt[i] > 0 then
+//        begin
+//          CurrIndex := LAryInt[i];
+//          FActionList.Move(LAryInt[i], (CurrIndex - 1));
+//          FActionCollection.Item[CurrIndex].Index := CurrIndex - 1;
+//          Items.Move(LAryInt[i], (CurrIndex - 1));
+////          ItemIndex := CurrIndex - 1;
+//        end;
+//      end;//for
+//    end;//with
+//  finally
+//    ActionEditLB.Items.EndUpdate;
+//  end;
 end;
 
 procedure TfrmActions.ActionTypeComboChange(Sender: TObject);
@@ -633,24 +658,26 @@ begin
 end;
 
 procedure TfrmActions.btnDownClick(Sender: TObject);
-var
-  CurrIndex, LastIndex: Integer;
+//var
+//  CurrIndex, LastIndex: Integer;
 begin
-  with ActionEditLB do
-  begin
-    CurrIndex := ItemIndex;
-    LastIndex := Items.Count;
-    if ItemIndex <> -1 then
-    begin
-      if CurrIndex + 1 < LastIndex then
-      begin
-        FActionList.Move(ItemIndex, (CurrIndex + 1));
-        FActionCollection.Item[CurrIndex].Index := CurrIndex + 1;
-        Items.Move(ItemIndex, (CurrIndex + 1));
-        ItemIndex := CurrIndex + 1;
-      end;
-    end;
-  end;
+  MoveDownSelectedItemsFromListBox(ActionEditLB);
+
+//  with ActionEditLB do
+//  begin
+//    CurrIndex := ItemIndex;
+//    LastIndex := Items.Count;
+//    if ItemIndex <> -1 then
+//    begin
+//      if CurrIndex + 1 < LastIndex then
+//      begin
+//        FActionList.Move(ItemIndex, (CurrIndex + 1));
+//        FActionCollection.Item[CurrIndex].Index := CurrIndex + 1;
+//        Items.Move(ItemIndex, (CurrIndex + 1));
+//        ItemIndex := CurrIndex + 1;
+//      end;
+//    end;
+//  end;
 end;
 
 procedure TfrmActions.Timer1Timer(Sender: TObject);
